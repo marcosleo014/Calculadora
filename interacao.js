@@ -1,11 +1,13 @@
 const tela = document.querySelector("#tela")
-let resultado;
+let resultado = 0;
 let numeroNaTela;
 
 // ================== TECLA CE ===============================
 document.querySelector("#tecla-ce").addEventListener("click", () => {
     numeroNaTela = "0"
     tela.innerText = numeroNaTela
+    resultado = 0
+    operador = ""
 })
 // ================== TECLA C ===============================
 document.querySelector("#tecla-c").addEventListener("click", () => {
@@ -60,4 +62,24 @@ document.querySelector("#tecla-virg").addEventListener("click", () => {
     if (!numeroNaTela.includes(".")) {
         teclarNumero(".")
     }
+})
+
+
+let novoNumero = false
+//======================== SOMAR ===========================
+document.querySelector("#tecla-somar").addEventListener("click", () => {
+    novoNumero = true;
+    operador = "+"
+    resultado += +numeroNaTela;
+})
+document.querySelector("#tecla-igual").addEventListener("click", () => {
+    novoNumero = true;
+    
+    switch (operador) {
+        case "+":
+            resultado += +numeroNaTela;
+    }
+
+    tela.innerText = resultado;
+    operador = ""
 })
